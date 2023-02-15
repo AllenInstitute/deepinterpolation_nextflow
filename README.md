@@ -21,7 +21,7 @@ For more instructins, see https://www.nextflow.io/docs/latest/getstarted.html
 nf files contains all required instruction to pull environments (dockers, ...) and launch the underlying figures code.
 
 
-Credentials
+Notes
 ========================
 Please reach out jeromel@alleninstitute.org for any questions. If this is useful to you, :wave: are welcome!
-Credentials are due to David Feng and the Code Ocean team. 
+Credits are due to David Feng and the Code Ocean team. This repo results from the work of a lot of people. 
