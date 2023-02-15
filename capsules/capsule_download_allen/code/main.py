@@ -3,6 +3,8 @@ import json
 results_folder = "../results/"
 data_folder = "../data/"
 import boto3
+from botocore import UNSIGNED
+from botocore.client import Config
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -24,8 +26,9 @@ if __name__ == "__main__":
     file_name = metadata_nwb['bucket_filename']
 
     # Connect to the S3 bucket. modify below to use your own bucket with a private key
-    s3 = boto3.resource('s3', aws_access_key_id='None', aws_secret_access_key='None')
+    # s3 = boto3.resource('s3', aws_access_key_id='None', aws_secret_access_key='None')
 
+    s3 = boto3.resource("s3", config=Config(signature_version=UNSIGNED))
     bucket = s3.Bucket(bucket_name)
 
     bucket.download_file(file_name, h5_file_output)
