@@ -1,14 +1,12 @@
 #!/usr/bin/env nextflow
-// hash:sha256:ff2fe5b6eec110a653a0aa301cbb92b78e987e60d34e94dcc7c743e07a91bf63
-
 nextflow.enable.dsl = 1
 
-capsule_finetuning_allen_to_capsule_inference = channel.create()
 json_inputs_ranges_to_capsule_inference = channel.fromPath("./input/frame_range/*", type: 'any', relative: true)
-capsule_inference_to_capsule_movie_merger = channel.create()
-capsule_download_allen_to_capsule_finetuning_allen = channel.create()
-capsule_movie_merger_to_capsule_suite2p = channel.create()
 small_list_to_download_locally = channel.fromPath("./input/movie_s3/*", type: 'any', relative: true)
+capsule_download_allen_to_capsule_finetuning_allen = channel.create()
+capsule_finetuning_allen_to_capsule_inference = channel.create()
+capsule_inference_to_capsule_movie_merger = channel.create()
+capsule_movie_merger_to_capsule_suite2p = channel.create()
 
 // capsule - calcium imaging + deepinterp inf - v1
 process capsule_inference {
@@ -16,7 +14,7 @@ process capsule_inference {
 	container '245412653747/deep_interpolation_nextflow:inference'
 
 	cpus 2
-	memory '8 GB'
+	memory '40 GB'
 
 	input:
 	tuple val(id_movie), path('capsule/data/fine_tuning/') from capsule_finetuning_allen_to_capsule_inference
@@ -45,7 +43,7 @@ process capsule_inference {
 	rm -rf capsule-repo
 
 	echo "[${task.tag}] running capsule..."
-	cd capsule/code
+	cd capsule/code/capsule_inference
 	chmod +x run
 	./run --cache_input_data --copy_input_file_scratch --input_frame_range ../data/List_of_frames_intervals/input_range.json --inference_model_path ../data/fine_tuning/fine_tuned_model.h5 --input_movie_path ../data/fine_tuning/input_ophys_experiment.h5
 
@@ -59,7 +57,7 @@ process capsule_movie_merger {
 	container '245412653747/deep_interpolation_nextflow:merging'
 
 	cpus 2
-	memory '8 GB'
+	memory '64 GB'
 
 	input:
 	tuple val(id_movie), path('capsule/data/merge/') from capsule_inference_to_capsule_movie_merger.groupTuple()
@@ -84,7 +82,7 @@ process capsule_movie_merger {
 	rm -rf capsule-repo
 
 	echo "[${task.tag}] running capsule..."
-	cd capsule/code
+	cd capsule/code/capsule_movie_merger
 	chmod +x run
 	./run 
 
@@ -97,8 +95,8 @@ process capsule_finetuning_allen {
 	tag 'capsule_finetuning_allen'
 	container '245412653747/deep_interpolation_nextflow:finetuning_allen'
 
-	cpus 4
-	memory '12 GB'
+	cpus 32
+	memory '64 GB'
 
 	input:
 	tuple val(id_movie), path('capsule/data/ophys_experiment.h5') from capsule_download_allen_to_capsule_finetuning_allen
@@ -125,7 +123,7 @@ process capsule_finetuning_allen {
 	rm -rf capsule-repo
 
 	echo "[${task.tag}] running capsule..."
-	cd capsule/code
+	cd capsule/code/capsule_finetuning_allen
 	chmod +x run
 	./run --keep_input_movie_in_output --copy_input_file_scratch --input_model_path ../data/deepInterpolation_input_model.h5 --input_movie_path ../data/ophys_experiment.h5 --nb_frame_training 10000
 
@@ -137,8 +135,8 @@ process capsule_finetuning_allen {
 process capsule_suite2p {
 	tag 'capsule_suite2p'
 	container '245412653747/deep_interpolation_nextflow:suite2p'
-	cpus 2
-	memory '8 GB'
+	cpus 16
+	memory '100 GB'
 
 	publishDir "$RESULTS_PATH/$id_movie", saveAs: { filename -> new File(filename).getName() }
 
@@ -165,7 +163,7 @@ process capsule_suite2p {
 	rm -rf capsule-repo
 
 	echo "[${task.tag}] running capsule..."
-	cd capsule/code
+	cd capsule/code/capsule_suite2p
 	chmod +x run
 	./run --input_movie_path ../data/merged_movie.h5 --sampling_rate 30 --suite2p_threshold_scaling 1.5
 
@@ -175,11 +173,11 @@ process capsule_suite2p {
 
 // capsule - download dandi nwb file locally
 process capsule_download_allen {
-	tag 'capsule-4041483'
+	tag 'capsule_download_allen'
 	container '245412653747/deep_interpolation_nextflow:download_allen'
 
-	cpus 2
-	memory '8 GB'
+	cpus 4
+	memory '32 GB'
 
 	input:
 	val path7 from small_list_to_download_locally
@@ -205,7 +203,7 @@ process capsule_download_allen {
 	rm -rf capsule-repo
 	
 	echo "[${task.tag}] running capsule..."
-	cd capsule/code
+	cd capsule/code/capsule_download_allen
 	chmod +x run
 	./run --json_file_input ../data/movie_param.json --h5_file_output ../results/experiment.h5
 
