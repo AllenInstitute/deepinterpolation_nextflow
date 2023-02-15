@@ -1,0 +1,9 @@
+metadata_version: 1
+name: Suite2p - Segmentation of neuronal units - no movie output
+description: This capsule performs neuronal unit segmentation on a single calcium
+  imaging movie. It outputs an NWB file associated with this segmentation.
+tags:
+- two-photon
+- calcium imaging
+authors:
+- name: Jerome Lecoq

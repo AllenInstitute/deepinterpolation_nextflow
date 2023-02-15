@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -ex
+
+# This is the master script for the capsule. When you click "Reproducible Run", the code in this file will execute.
+python -u main.py "$@"
+
+# To render the jupyter notebook to .html format and save to the results folder, install jupyter in the environment 
+# editor using conda or pip and uncomment the following lines.
+# jupyter nbconvert \
+# 	--to 'html' \
+# 	--ExecutePreprocessor.allow_errors=True \
+# 	--ExecutePreprocessor.timeout=-1 \
+# 	--FilesWriter.build_directory=../results \
+# 	--execute 'sample.ipynb'

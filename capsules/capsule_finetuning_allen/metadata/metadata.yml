@@ -1,0 +1,10 @@
+metadata_version: 1
+name: DeepInterpolation - Fine tuning of a pre-trained calcium imaging model
+description: This capsule fine-tuned a pre-trained model using a subset of a calcium
+  imaging movie. This is typically used in a full self-supervising denoising workflow
+  as a preliminary step to avoid out of distribution errors.
+tags:
+- two-photon
+- calcium imaging
+authors:
+- name: Jerome Lecoq
