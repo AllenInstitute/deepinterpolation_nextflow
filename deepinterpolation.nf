@@ -34,7 +34,7 @@ process capsule_inference {
 	mkdir -p capsule/scratch
 	mkdir -p capsule/data/List_of_frames_intervals
 
-	ln -s home/jeromel/nextflow/input/frame_range/$path2 capsule/data/List_of_frames_intervals/input_range.json # id: 98967a19-1088-4e73-9796-0c6490e2ce55
+	ln -s /home/jeromel/nextflow/input/frame_range/$path2 capsule/data/List_of_frames_intervals/input_range.json # id: 98967a19-1088-4e73-9796-0c6490e2ce55
 	
 	echo "[${task.tag}] cloning git repo..."
 	git clone "https://github.com/AllenInstitute/deepinterpolation_nextflow.git" capsule-repo
