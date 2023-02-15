@@ -24,8 +24,7 @@ if __name__ == "__main__":
     file_name = metadata_nwb['bucket_filename']
 
     # Connect to the S3 bucket. modify below to use your own bucket with a private key
-    # s3 = boto3.resource('s3', aws_access_key_id='', aws_secret_access_key='')
-    s3 = boto3.resource('s3')
+    s3 = boto3.resource('s3', aws_access_key_id='None', aws_secret_access_key='None')
 
     bucket = s3.Bucket(bucket_name)
 
