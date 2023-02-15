@@ -1,0 +1,6 @@
+.DS_Store
+nextflow
+.spyproject
+work
+.nextflow*
+__pycache__
