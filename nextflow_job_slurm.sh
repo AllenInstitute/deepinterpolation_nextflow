@@ -6,5 +6,5 @@
 #SBATCH --time=24:00:00
 source ~/miniconda3/etc/profile.d/conda.sh
 conda activate /allen/programs/mindscope/workgroups/openscope/environment/nextflow
-cd /home/jeromel/nextflow
+cd /home/jeromel/deepinterpolation_deploy/deepinterpolation_nextflow
 ./nextflow deepinterpolation.nf
