@@ -38,7 +38,6 @@ process capsule_inference {
 	
 	echo "[${task.tag}] cloning git repo..."
 	git clone "https://github.com/AllenInstitute/deepinterpolation_nextflow.git" capsule-repo
-	git -C capsule-repo checkout 05e21b682a6efd6a1088012ba09f96e06e112fc2 --quiet
 	mv capsule-repo/code capsule/code
 	rm -rf capsule-repo
 
@@ -77,7 +76,6 @@ process capsule_movie_merger {
 
 	echo "[${task.tag}] cloning git repo..."
 	git clone "https://github.com/AllenInstitute/deepinterpolation_nextflow.git" capsule-repo
-	git -C capsule-repo checkout 51dd91eff4d4668b37aac1b4615c2dbfb95aa8cb --quiet
 	mv capsule-repo/code capsule/code
 	rm -rf capsule-repo
 
@@ -118,7 +116,6 @@ process capsule_finetuning_allen {
 	
 	echo "[${task.tag}] cloning git repo..."
 	git clone "https://github.com/AllenInstitute/deepinterpolation_nextflow.git" capsule-repo
-	git -C capsule-repo checkout da936a8d2d38e7d22a9dc6ffcdcf848d63e8505d --quiet
 	mv capsule-repo/code capsule/code
 	rm -rf capsule-repo
 
