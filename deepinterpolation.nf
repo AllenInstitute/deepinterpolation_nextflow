@@ -38,11 +38,11 @@ process capsule_inference {
 	
 	echo "[${task.tag}] cloning git repo..."
 	git clone "https://github.com/AllenInstitute/deepinterpolation_nextflow.git" capsule-repo
-	mv capsule-repo/code capsule/code
+	mv capsule-repo/capsule_inference/code capsule/code
 	rm -rf capsule-repo
 
 	echo "[${task.tag}] running capsule..."
-	cd capsule/code/capsule_inference
+	cd capsule/code
 	chmod +x run
 	./run --cache_input_data --copy_input_file_scratch --input_frame_range ../data/List_of_frames_intervals/input_range.json --inference_model_path ../data/fine_tuning/fine_tuned_model.h5 --input_movie_path ../data/fine_tuning/input_ophys_experiment.h5
 
@@ -76,11 +76,11 @@ process capsule_movie_merger {
 
 	echo "[${task.tag}] cloning git repo..."
 	git clone "https://github.com/AllenInstitute/deepinterpolation_nextflow.git" capsule-repo
-	mv capsule-repo/code capsule/code
+	mv capsule-repo/capsule_movie_merger/code capsule/code
 	rm -rf capsule-repo
 
 	echo "[${task.tag}] running capsule..."
-	cd capsule/code/capsule_movie_merger
+	cd capsule/code
 	chmod +x run
 	./run 
 
@@ -116,11 +116,11 @@ process capsule_finetuning_allen {
 	
 	echo "[${task.tag}] cloning git repo..."
 	git clone "https://github.com/AllenInstitute/deepinterpolation_nextflow.git" capsule-repo
-	mv capsule-repo/code capsule/code
+	mv capsule-repo/capsule_finetuning_allen/code capsule/code
 	rm -rf capsule-repo
 
 	echo "[${task.tag}] running capsule..."
-	cd capsule/code/capsule_finetuning_allen
+	cd capsule/code
 	chmod +x run
 	./run --keep_input_movie_in_output --copy_input_file_scratch --input_model_path ../data/deepInterpolation_input_model.h5 --input_movie_path ../data/ophys_experiment.h5 --nb_frame_training 10000
 
@@ -156,11 +156,11 @@ process capsule_suite2p {
 
 	echo "[${task.tag}] cloning git repo..."
 	git clone "https://github.com/AllenInstitute/deepinterpolation_nextflow.git" capsule-repo
-	mv capsule-repo/code capsule/code
+	mv capsule-repo/capsule_suite2p/code capsule/code
 	rm -rf capsule-repo
 
 	echo "[${task.tag}] running capsule..."
-	cd capsule/code/capsule_suite2p
+	cd capsule/code
 	chmod +x run
 	./run --input_movie_path ../data/merged_movie.h5 --sampling_rate 30 --suite2p_threshold_scaling 1.5
 
@@ -196,11 +196,11 @@ process capsule_download_allen {
 	
 	echo "[${task.tag}] cloning git repo..."
 	git clone "https://github.com/AllenInstitute/deepinterpolation_nextflow.git" capsule-repo
-	mv capsule-repo/code capsule/code
+	mv capsule-repo/capsule_download_allen/code capsule/code
 	rm -rf capsule-repo
 	
 	echo "[${task.tag}] running capsule..."
-	cd capsule/code/capsule_download_allen
+	cd capsule/code
 	chmod +x run
 	./run --json_file_input ../data/movie_param.json --h5_file_output ../results/experiment.h5
 
