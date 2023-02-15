@@ -38,7 +38,7 @@ process capsule_inference {
 	
 	echo "[${task.tag}] cloning git repo..."
 	git clone "https://github.com/AllenInstitute/deepinterpolation_nextflow.git" capsule-repo
-	mv capsule-repo/capsule_inference/code capsule/code
+	mv capsule-repo/capsules/capsule_inference/code capsule/code
 	rm -rf capsule-repo
 
 	echo "[${task.tag}] running capsule..."
@@ -76,7 +76,7 @@ process capsule_movie_merger {
 
 	echo "[${task.tag}] cloning git repo..."
 	git clone "https://github.com/AllenInstitute/deepinterpolation_nextflow.git" capsule-repo
-	mv capsule-repo/capsule_movie_merger/code capsule/code
+	mv capsule-repo/capsules/capsule_movie_merger/code capsule/code
 	rm -rf capsule-repo
 
 	echo "[${task.tag}] running capsule..."
@@ -116,7 +116,7 @@ process capsule_finetuning_allen {
 	
 	echo "[${task.tag}] cloning git repo..."
 	git clone "https://github.com/AllenInstitute/deepinterpolation_nextflow.git" capsule-repo
-	mv capsule-repo/capsule_finetuning_allen/code capsule/code
+	mv capsule-repo/capsules/capsule_finetuning_allen/code capsule/code
 	rm -rf capsule-repo
 
 	echo "[${task.tag}] running capsule..."
@@ -156,7 +156,7 @@ process capsule_suite2p {
 
 	echo "[${task.tag}] cloning git repo..."
 	git clone "https://github.com/AllenInstitute/deepinterpolation_nextflow.git" capsule-repo
-	mv capsule-repo/capsule_suite2p/code capsule/code
+	mv capsule-repo/capsules/capsule_suite2p/code capsule/code
 	rm -rf capsule-repo
 
 	echo "[${task.tag}] running capsule..."
@@ -196,7 +196,7 @@ process capsule_download_allen {
 	
 	echo "[${task.tag}] cloning git repo..."
 	git clone "https://github.com/AllenInstitute/deepinterpolation_nextflow.git" capsule-repo
-	mv capsule-repo/capsule_download_allen/code capsule/code
+	mv capsule-repo/capsules/capsule_download_allen/code capsule/code
 	rm -rf capsule-repo
 	
 	echo "[${task.tag}] running capsule..."
