@@ -34,7 +34,7 @@ process capsule_inference {
 	mkdir -p capsule/scratch
 	mkdir -p capsule/data/List_of_frames_intervals
 
-	ln -s /home/jeromel/nextflow/input/frame_range/$path2 capsule/data/List_of_frames_intervals/input_range.json # id: 98967a19-1088-4e73-9796-0c6490e2ce55
+	ln -s /home/jeromel/deepinterpolation_deploy/deepinterpolation_nextflow/input/frame_range/$path2 capsule/data/List_of_frames_intervals/input_range.json # id: 98967a19-1088-4e73-9796-0c6490e2ce55
 	
 	echo "[${task.tag}] cloning git repo..."
 	git clone "https://github.com/AllenInstitute/deepinterpolation_nextflow.git" capsule-repo
@@ -112,7 +112,7 @@ process capsule_finetuning_allen {
 	mkdir -p capsule/results
 	mkdir -p capsule/scratch
 
-	ln -s '/home/jeromel/nextflow/input/2021_07_31_09_49_38_095550_unet_1024_search_mean_squared_error_pre_30_post_30_feat_32_power_1_depth_4_unet_True-0125-0.5732.h5' capsule/data/deepInterpolation_input_model.h5 # id: 2688c8ce-32b3-48c7-8e92-2d3a2a9de817
+	ln -s '/home/jeromel/deepinterpolation_deploy/deepinterpolation_nextflow/input/2021_07_31_09_49_38_095550_unet_1024_search_mean_squared_error_pre_30_post_30_feat_32_power_1_depth_4_unet_True-0125-0.5732.h5' capsule/data/deepInterpolation_input_model.h5 # id: 2688c8ce-32b3-48c7-8e92-2d3a2a9de817
 	
 	echo "[${task.tag}] cloning git repo..."
 	git clone "https://github.com/AllenInstitute/deepinterpolation_nextflow.git" capsule-repo
@@ -192,7 +192,7 @@ process capsule_download_allen {
 	mkdir -p capsule/results
 	mkdir -p capsule/scratch
 	
-	ln -s '/home/jeromel/nextflow/input/movie_s3/$path7' ./capsule/data/movie_param.json # id: 9b848d33-3980-412c-8752-d7f6d6007eff
+	ln -s '/home/jeromel/deepinterpolation_deploy/deepinterpolation_nextflow/input/movie_s3/$path7' ./capsule/data/movie_param.json # id: 9b848d33-3980-412c-8752-d7f6d6007eff
 	
 	echo "[${task.tag}] cloning git repo..."
 	git clone "https://github.com/AllenInstitute/deepinterpolation_nextflow.git" capsule-repo
