@@ -27,7 +27,7 @@ process capsule_inference {
 	"""
 	#!/usr/bin/env bash
 	set -e
-:q
+	
 	mkdir -p capsule
 	mkdir -p capsule/data
 	mkdir -p capsule/results
