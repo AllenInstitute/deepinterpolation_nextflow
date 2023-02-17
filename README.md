@@ -24,4 +24,4 @@ nf files contains all required instruction to pull environments (dockers, ...) a
 Notes
 ========================
 Please reach out jeromel@alleninstitute.org for any questions. If this is useful to you, :wave: are welcome!
-Credits are due to David Feng and the Code Ocean team. This repo results from the work of a lot of people. 
+Credits are due to [David Feng](https://github.com/dyf) and the Code Ocean team. This repo results from the work of a lot of people. 
