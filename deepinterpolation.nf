@@ -207,3 +207,43 @@ process capsule_download_allen {
 	echo "[${task.tag}] completed!"
 	"""
 }
+
+// capsule - calcium imaging + caiman segmentation - v1
+/* process capsule_caiman {
+	tag 'capsule_caiman'
+	container '245412653747/deep_interpolation_nextflow:caiman'
+	cpus 16
+	memory '100 GB'
+
+	publishDir "$RESULTS_PATH/$id_movie", saveAs: { filename -> new File(filename).getName() }
+
+	input:
+	tuple val(id_movie), path('capsule/data/') from capsule_movie_merger_to_capsule_suite2p
+	val index from 1..10000
+
+	output:
+	path 'capsule/results/*'
+
+	script:
+	"""
+	#!/usr/bin/env bash
+	set -e
+
+	mkdir -p capsule
+	mkdir -p capsule/data
+	mkdir -p capsule/results
+	mkdir -p capsule/scratch
+
+	echo "[${task.tag}] cloning git repo..."
+	git clone "https://github.com/AllenInstitute/deepinterpolation_nextflow.git" capsule-repo
+	mv capsule-repo/capsules/capsule_caiman/code capsule/code
+	rm -rf capsule-repo
+
+	echo "[${task.tag}] running capsule..."
+	cd capsule/code
+	chmod +x run
+	./run --input_movie_path ../data/merged_movie.h5 --sampling_rate 30
+
+	echo "[${task.tag}] completed!"
+	"""
+} */

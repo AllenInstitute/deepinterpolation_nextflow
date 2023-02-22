@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -ex
+source activate caiman
+
+export MKL_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+export VECLIB_MAXIMUM_THREADS=1
+
+# This is the master script for the capsule. When you click "Reproducible Run", the code in this file will execute.
+python -u run_caiman.py "$@"
