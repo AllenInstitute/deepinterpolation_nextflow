@@ -22,12 +22,14 @@ nf files contains all required instruction to pull environments (dockers, ...) a
 
 The provided .config file is written to work on a SLURM cluster, below is an example .config file, if you are running this locally using a docker daemon: 
 
+```
   docker {
       enabled = true
       runOptions = '--pull=always'
       runOptions= "-v $HOME:$HOME"
   }
-  
+```
+
 Notes
 ========================
 Please reach out jeromel@alleninstitute.org for any questions. If this is useful to you, :wave: are welcome!
