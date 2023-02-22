@@ -20,7 +20,8 @@ For more instructins, see https://www.nextflow.io/docs/latest/getstarted.html
 
 nf files contains all required instruction to pull environments (dockers, ...) and launch the underlying figures code.
 
-The provided .config file is written to work on a SLURM cluster, below is an example .config file, if you are running this locally using a docker daemon: 
+The provided .config file is written to work on a SLURM cluster. 
+Below is an example .config file, if you want to run this locally using a docker daemon: 
 
 ```
   docker {
