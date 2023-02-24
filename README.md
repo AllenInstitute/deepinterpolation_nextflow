@@ -31,6 +31,8 @@ Below is an example .config file, if you want to run this locally using a docker
   }
 ```
 
+You can edit the CPU and Memory fields in the .nf file to reduce usage if your hardware is not able to provide these requirements. Note you will get slower performance in that case. 
+
 Notes
 ========================
 Please reach out jeromel@alleninstitute.org for any questions. If this is useful to you, :wave: are welcome!
